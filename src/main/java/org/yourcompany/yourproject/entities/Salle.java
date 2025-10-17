@@ -44,4 +44,8 @@ public class Salle {
     public String toString() {
         return super.toString();
     }
+
+    public List<Machine> getMachines() {
+        return machines;
+    }
 }

@@ -5,6 +5,8 @@ import java.util.Date;
 import jakarta.persistence.*;
 
 @Entity
+@NamedNativeQuery(name = "findBetweenDateNative", query = "select * from machine where dateAchat between :d1 and :d2", resultClass = Machine.class)
+@NamedQuery(name = "findBetweenDate", query = "from Machine where dateAchat between :d1 and :d2")
 public class Machine {
     
     @Id
@@ -20,9 +22,10 @@ public class Machine {
 
     public Machine(){}
 
-    public Machine(String ref, Date dateAchat) {
+    public Machine(String ref, Date dateAchat, Salle salle) {
         this.ref = ref;
         this.dateAchat = dateAchat;
+        this.salle = salle;
     }
     
     public void setId(int id) {
